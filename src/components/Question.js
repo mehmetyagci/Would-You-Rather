@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
+import ShadowWrapper from 'react-shadow-wrapper';
 
 class Question extends Component {
     render() {
@@ -14,37 +15,31 @@ class Question extends Component {
         }
 
         return (
-            <div className="item">
-
+            <ShadowWrapper>
                 <div className="ui image">
                     <img src={question.author.avatarURL} alt={question.author.name} />
                 </div>
 
                 <div className="content">
                     <div className="header"> {question.author.name} asks:</div>
-                    <div className="meta"><span> {question.optionOne.text} </span></div>
-                </div>
+                    <div className="meta"><span> Would you rather </span></div>
+                    <div className="description">
+                        <p>{question.optionOne.text}</p>
+                        <p>vs.</p>
+                        <p>{question.optionTwo.text}</p>
+                    </div>
+
+                    <div class="ui divider"></div>
+
+                    <div className="extra content">
+
+                    <div class="ui submit button">Register</div>
 
 
-                
-                <br />
-                auther.avatarUrl:{question.author.avatarURL}
-                <br />
-                <div>
-                    optionOne.text:{question.optionOne.text}
-                    <br />
-                    optionOne.votes.length:{question.optionOne.votes.length}
+                        
+                    </div>
                 </div>
-                vs.
-                <div>
-                    optionTwo.text:{question.optionTwo.text}
-                    <br />
-                    optionTwo.votes.length:{question.optionTwo.votes.length}
-                </div>
-                <br />
-                answered:{question.answered.toString()}
-                <hr />
-            </div>
+            </ShadowWrapper>
         )
     }
 }

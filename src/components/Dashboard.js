@@ -9,15 +9,13 @@ class Dashboard extends Component {
         return (
             <div>
                 <h3>Questions</h3>
-                <ul>
-                    <div className="ui items">
-                        {this.props.questionIds.map((id) => (
-                            <li key={id}>
-                                <Question id={id} />
-                            </li>
-                        ))}
-                    </div>
-                </ul>
+                <div className="ui items">
+                    {this.props.questionIds.map((id) => (
+                        <div className="item" key={id}>
+                            <Question id={id} />
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }
