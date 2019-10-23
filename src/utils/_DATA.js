@@ -132,6 +132,7 @@ export function _getQuestions () {
 }
 
 function formatQuestion ({ optionOneText, optionTwoText, author }) {
+  console.log(`formatQuestion->optionOneText:${optionOneText}, optionTwoText:${optionTwoText}, author:${author}`);
   return {
     id: generateUID(),
     timestamp: Date.now(),
