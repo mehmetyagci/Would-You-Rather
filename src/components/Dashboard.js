@@ -7,8 +7,8 @@ class Dashboard extends Component {
         console.log("Dashboard->render");
         console.log(this.props);
         return (
-            <div>
-                <h3>Questions</h3>
+            <div>             
+                <h1>Questions</h1>
                 <div className="ui items">
                     {this.props.questionIds.map((id) => (
                         <div className="item" key={id}>
