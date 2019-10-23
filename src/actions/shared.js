@@ -7,7 +7,7 @@ const AUTHED_ID = 'tylermcginnis';
 
 // action creator
 export function handleInitialData () {
-  //console.log ('handleInitialData');
+  console.log ('handleInitialData');
   return dispatch => {
     return getInitialData ().then (({users, questions}) => {
       dispatch (receiveUsers (users));
