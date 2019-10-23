@@ -7,9 +7,10 @@ const AUTHED_ID = 'tylermcginnis';
 
 // action creator
 export function handleInitialData () {
-  console.log ('handleInitialData');
+  console.log ('actions->shared->handleInitialData()');
   return dispatch => {
-    return getInitialData ().then (({users, questions}) => {
+    return getInitialData ()
+    .then (({users, questions}) => {
       dispatch (receiveUsers (users));
       dispatch (receiveQuestions (questions));
       dispatch (setAuthedUser (AUTHED_ID));
