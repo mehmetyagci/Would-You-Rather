@@ -5,15 +5,20 @@ import Question from "./Question";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { unAnswered: false };
+    this.state = { answerFilter: "answered" };
   }
 
   render() {
     console.log("Dashboard->render");
     console.log(this.props);
     return (
+
       <div>
+
+<div>
+  Answer: {this.state.answerFilter}
+</div>
+
         <div className="ui divided list">
           <div className="item">
             <div className="ui segment">
@@ -41,10 +46,13 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions }, ownProps) {
   console.log("Dashboard->mapStateToProps");
-  console.log(questions);
-  return {
+  console.log("questions:", questions);
+  //console.log("this.state.answerFilter", this.state.answerFilter);
+  const filteredQuestions =  questions.filter(question => question.OptionOne.votes.length > 0);
+  console.log("filteredQuestions:", filteredQuestions);
+  return {    
     questionIds: Object.keys(questions).sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     )

@@ -13,11 +13,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ui container">
         <LoadingBar />
         {this.props.loading === true
           ? null
-          : <NewQuestion />
+          : <Dashboard />
         }
       </div>
     );

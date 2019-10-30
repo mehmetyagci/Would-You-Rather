@@ -30,7 +30,7 @@ class Question extends Component {
           </div>
 
           <div className="extra content">
-            <div class="ui submit button">View Poll</div>
+            <div className="ui submit button">View Poll</div>
           </div>
         </div>
       </ShadowWrapper>
