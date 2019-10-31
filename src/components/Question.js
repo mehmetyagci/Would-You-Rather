@@ -6,8 +6,7 @@ import ShadowWrapper from "react-shadow-wrapper";
 class Question extends Component {
   render() {
     const { question } = this.props;
-    console.log("vQuestion");
-    console.log(question);
+    console.log("Question", question);
 
     if (question == null) {
       // TODO: this line go to 404 page
@@ -17,7 +16,10 @@ class Question extends Component {
     return (
       <ShadowWrapper>
         <div className="ui image">
-          <img src={question.author.avatarURL} alt={`Avatar of ${question.author.name}`} />
+          <img
+            src={question.author.avatarURL}
+            alt={`Avatar of ${question.author.name}`}
+          />
         </div>
 
         <div className="content">
@@ -26,7 +28,7 @@ class Question extends Component {
             <span> Would you rather </span>
           </div>
           <div className="description">
-            <p>...{question.optionOne.text.substring(0,15)}...</p>
+            <p>...{question.optionOne.text.substring(0, 15)}...</p>
           </div>
 
           <div className="extra content">
