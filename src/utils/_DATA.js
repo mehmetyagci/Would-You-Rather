@@ -40,7 +40,7 @@ let questions = {
     author: 'sarahedo',
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['sarahedo'],
+      votes: [],
       text: 'have horrible short term memory',
     },
     optionTwo: {
@@ -57,7 +57,7 @@ let questions = {
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
+      votes: [],
       text: 'become a supervillain'
     }
   },
@@ -70,7 +70,7 @@ let questions = {
       text: 'be telekinetic',
     },
     optionTwo: {
-      votes: ['sarahedo'],
+      votes: [],
       text: 'be telepathic'
     }
   },
@@ -92,11 +92,11 @@ let questions = {
     author: 'tylermcginnis',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['tylermcginnis'],
+      votes: [],
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: [],
       text: 'have your best friend find $500'
     }
   },
@@ -132,7 +132,7 @@ export function _getQuestions () {
 }
 
 function formatQuestion ({ optionOneText, optionTwoText, author }) {
-  console.log(`formatQuestion->optionOneText:${optionOneText}, optionTwoText:${optionTwoText}, author:${author}`);
+  //console.log(`formatQuestion->optionOneText:${optionOneText}, optionTwoText:${optionTwoText}, author:${author}`);
   return {
     id: generateUID(),
     timestamp: Date.now(),

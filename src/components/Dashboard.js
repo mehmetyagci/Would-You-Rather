@@ -1,21 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
+import { object } from "prop-types";
+import { bindActionCreators } from 'redux';
+
+import { VisibilityFilters, setVisibilityFilter } from "../actions/questions";
 
 class Dashboard extends Component {
+  handleSend = message => {
+    this.props.setVisibilityFilter(message);
+  };
+
   render() {
-    console.log("Dashboard->render");
-    console.log(this.props);
+    console.log("Dashboard->render:this.props", this.props);
     return (
       <div>
         <div className="ui divided list">
           <div className="item">
             <div className="ui segment">
-              <h4 className="ui left">Payment method</h4>
               <div className="ui right buttons">
-                <div className="ui button">Unanswered</div>
+                <div
+                  className="ui button"
+                  onClick={() => this.props.setVisibilityFilter(VisibilityFilters.SHOW_UNANSWERED)}
+                >
+                  Unanswered
+                </div>
                 <div className="or"></div>
-                <div className="ui button">Answered</div>
+                <div
+                  className="ui button"
+                  onClick={() => this.props.setVisibilityFilter(VisibilityFilters.SHOW_ANSWERED)}
+                >
+                  Answered
+                </div>
               </div>
             </div>
           </div>
@@ -24,9 +40,24 @@ class Dashboard extends Component {
         <h1>Questions</h1>
 
         <div className="ui items">
-          {this.props.questionIds.map(id => (
-            <div className="item" key={id}>
-              <Question id={id} />
+          {console.log(
+            "this.props.questions1:",
+            Object.entries(this.props.questions)
+          )}
+          {console.log("this.props.questions2:", typeof this.props.questions)}
+          {console.log("this.props.questions3:", this.props.questions)}
+          {console.log(
+            "this.props.questions4:",
+            this.props.questions["6ni6ok3ym7mf1p33lnez"]
+          )}
+          {console.log(
+            "this.props.questions5:",
+            Object.values(this.props.questions)
+          )}
+
+          {Object.values(this.props.questions).map(question => (
+            <div className="item">
+              <Question id={question.id} />
             </div>
           ))}
         </div>
@@ -35,20 +66,55 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  const questions = store.questions;
-  console.log("Dashboard->mapStateToProps");
-  console.log("questions:", questions);
-  //console.log("this.state.answerFilter", this.state.answerFilter);
-  // const filteredQuestions = questions.filter(
-  //   question => question.OptionOne.votes.length > 0
-  // );
-  // console.log("filteredQuestions:", filteredQuestions);
+const getVisibleTodos = (questions, filter) => {
+  console.log("getVisibleTodos->questions:", questions);
+  console.log("getVisibleTodos->filter:", filter);
+
+  switch (filter) {
+    case VisibilityFilters.SHOW_ANSWERED:
+      return Object.values(questions).filter(function(q) {
+        console.log("inner query:", q);
+        return q.optionOne.votes.length + q.optionTwo.votes.length > 0;
+      });
+    default:
+      return Object.values(questions).filter(function(q) {
+        console.log("inner query:", q);
+        return q.optionOne.votes.length + q.optionTwo.votes.length === 0;
+      });
+  }
+};
+
+const mapStateToProps = state => ({
+  questions: getVisibleTodos(state.questions, state.visibilityFilter)
+});
+
+function mapDispatchToProps(dispatch) {
   return {
-    questionIds: Object.keys(questions).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    )
+    setVisibilityFilter:bindActionCreators(setVisibilityFilter, dispatch)
   };
 }
 
-export default connect(mapStateToProps)(Dashboard);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setVisibilityFilter: () => dispatch(setVisibilityFilter({visibilityFilter: VisibilityFilters.SHOW_UNANSWERED}))
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => ({
+//   sendVisibilityUnanswered: () => dispatch(setVisibilityFilter(VisibilityFilters.SHOW_UNANSWERED)),
+// })
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setVisibilityFilter: filter => dispatch(setVisibilityFilter(filter))
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => ({
+//   decrement: () => dispatch(setVisibilityFilter(VisibilityFilters.SHOW_UNANSWERED)),
+// });
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

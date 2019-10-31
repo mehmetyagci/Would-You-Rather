@@ -35,3 +35,13 @@ export function receiveQuestions(questions) {
     questions
   };
 }
+
+export const setVisibilityFilter = filter => ({
+  type: 'SET_VISIBILITY_FILTER',
+  filter
+})
+
+export const VisibilityFilters = {
+  SHOW_UNANSWERED: 'SHOW_UNANSWERED',
+  SHOW_ANSWERED: 'SHOW_ANSWERED',
+}
