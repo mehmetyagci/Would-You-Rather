@@ -16,6 +16,7 @@ import {
   }
   
   export function saveQuestionAnswer (info) {
+    //console.log("api->saveQuestionAnswer", info)
     return _saveQuestionAnswer(info)
   }
   

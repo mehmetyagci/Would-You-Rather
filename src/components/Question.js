@@ -1,12 +1,41 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { formatQuestion } from "../utils/helpers";
-import ShadowWrapper from "react-shadow-wrapper";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {formatQuestion} from '../utils/helpers';
+import ShadowWrapper from 'react-shadow-wrapper';
+
+import {handleAnswerQuestion} from '../actions/questions';
 
 class Question extends Component {
-  render() {
-    const { question } = this.props;
-    console.log("Question", question);
+  handleAnswer = (e, answer) => {
+    e.preventDefault ();
+
+    const {dispatch, question, authedUser} = this.props;
+
+    // console.log (`Question->handleAnswer1:this.props:`);
+    // console.log (this.props);
+    // console.log (Object.keys(this.props));
+    // console.log (Object.values(this.props));
+    // console.log (`Question->handleAnswer2:question:${question} autherUser:${authedUser}`);
+
+    dispatch (
+      handleAnswerQuestion ({
+        id: question.id,
+        answer: answer,
+        authedUser,
+      })
+    );
+  };
+
+  toParent = (e, id) => {
+    e.preventDefault ();
+    // todo: Redirect to parent Tweet.
+    console.log (`Question->toParent:e:${e} id:${id}`);
+  };
+
+  render () {
+    const {question} = this.props;
+    console.log ('Question->render');
+    console.log (question);
 
     if (question == null) {
       // TODO: this line go to 404 page
@@ -27,37 +56,59 @@ class Question extends Component {
           <div className="meta">
             <span> Would you rather </span>
           </div>
+
           <div className="description">
-            <p>...{question.optionOne.text.substring(0, 15)}...</p>
+            <p>...{question.optionOne.text}...</p>
+
+            <button
+              className="replying-to"
+              onClick={e => this.handleAnswer (e, 'optionOne')}
+            >
+              Vote OptionOne
+            </button>
+
           </div>
 
           <div className="extra content">
             <div className="ui submit button">View Poll</div>
           </div>
+
+          <div className="description">
+            <p>...{question.optionTwo.text}...</p>
+
+            <button
+              className="replying-to"
+              onClick={e => this.handleAnswer (e, 'optionTwo')}
+            >
+              Vote OptionTwo
+            </button>
+
+          </div>
+
         </div>
       </ShadowWrapper>
     );
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps ({authedUser, users, questions}, {id}) {
   const question = questions[id];
-  console.log("components->Question->mapStateToProps");
-  console.log(question);
-  const answered =
-    question.optionOne.votes.length + question.optionTwo.votes.length > 0
-      ? true
-      : false;
-  console.log(
-    `optionOne.votes:${question.optionOne.votes.length} optionTwo.votes:${question.optionTwo.votes.length} answered:${answered} `
+  console.log (`components->Question->mapStateToProps->question:${question}`);
+  const answered = question.optionOne.votes.length +
+    question.optionTwo.votes.length >
+    0
+    ? true
+    : false;
+  console.log (
+    `optionOne.votes:${question.optionOne.votes.length} optionTwo.votes:${question.optionTwo.votes.length} answered:${answered}`
   );
 
   return {
     authedUser,
     question: question
-      ? formatQuestion(question, users[question.author], authedUser, answered)
-      : null
+      ? formatQuestion (question, users[question.author], authedUser, answered)
+      : null,
   };
 }
 
-export default connect(mapStateToProps)(Question);
+export default connect (mapStateToProps) (Question);

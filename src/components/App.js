@@ -9,6 +9,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleInitialData());
+    console.log("App->componentDidMount",this.props);
   }
 
   render() {
