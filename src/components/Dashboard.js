@@ -42,13 +42,9 @@ class Dashboard extends Component {
           </div>
         </div>
 
-        <h1>Questions</h1>
-
         <div className="ui items">
-          
-
           {Object.values (this.props.questions).map (question => (
-            <div className="item">
+            <div className="item" key={question.id}>
               <Question id={question.id} />
             </div>
           ))}

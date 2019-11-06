@@ -45,52 +45,45 @@ class Question extends Component {
     }
 
     return (
-      <Link to={`/question/${question.id}`}>
-        <ShadowWrapper>
-          <div className="ui image">
-            <img
-              src={question.author.avatarURL}
-              alt={`Avatar of ${question.author.name}`}
-            />
+      <ShadowWrapper>
+        <div className="ui image">
+          <img
+            src={question.author.avatarURL}
+            alt={`Avatar of ${question.author.name}`}
+          />
+        </div>
+
+        <div className="content">
+          <div className="header"> {question.author.name} asked:</div>
+          <div className="meta">
+            <h1> Would you rather </h1>
           </div>
 
-          <div className="content">
-            <div className="header"> {question.author.name} asks:</div>
-            <div className="meta">
-              <span> Would you rather </span>
-            </div>
+          <hr />
 
-            <div className="description">
-              <p>...{question.optionOne.text}...</p>
-
-              <button
-                className="replying-to"
-                onClick={e => this.handleAnswer (e, 'optionOne')}
-              >
-                Vote OptionOne
-              </button>
-
-            </div>
-
-            <div className="extra content">
-              <div className="ui submit button">View Poll</div>
-            </div>
-
-            <div className="description">
-              <p>...{question.optionTwo.text}...</p>
-
-              <button
-                className="replying-to"
-                onClick={e => this.handleAnswer (e, 'optionTwo')}
-              >
-                Vote OptionTwo
-              </button>
-
-            </div>
-
+          <div className="description">
+            <h2>{question.optionOne.text}</h2>
           </div>
-        </ShadowWrapper>
-      </Link>
+
+          <br />
+          <div>
+            <h3>...OR...</h3>
+          </div>
+          <br />
+          <div className="description">
+            <h2>{question.optionTwo.text}</h2>
+          </div>
+          <br />
+          <div>
+            <Link to={`/question/${question.id}`}>
+
+              <button>
+                View Poll
+              </button>
+            </Link>
+          </div>
+        </div>
+      </ShadowWrapper>
     );
   }
 }

@@ -44,7 +44,7 @@ class QuestionPage extends Component {
             />
           </div>
           <div className="content">
-            <div className="header"> {questionUser.name} asks:</div>
+            <div className="header"> {questionUser.name} asked:</div>
             <div className="meta">
               <span> Would you rather </span>
             </div>
@@ -94,7 +94,7 @@ class QuestionPage extends Component {
             />
           </div>
           <div className="content">
-            <div className="header"> {questionUser.name} asks:</div>
+            <div className="header"> {questionUser.name} asked:</div>
             <div className="meta">
               <span> Would you rather </span>
             </div>

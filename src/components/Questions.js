@@ -21,7 +21,7 @@ class Question extends Component {
                 </div>
 
                 <div className="content">
-                    <div className="header"> {question.author.name} asks:</div>
+                    <div className="header"> {question.author.name} asked:</div>
                     <div className="meta"><span> Would you rather </span></div>
                     <div className="description">
                         <p>{question.optionOne.text}</p>
