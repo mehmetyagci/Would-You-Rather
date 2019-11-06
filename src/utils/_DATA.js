@@ -96,7 +96,7 @@ let questions = {
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: [],
+      votes: ['tylermcginnis'],
       text: 'have your best friend find $500',
     },
   },
@@ -105,7 +105,7 @@ let questions = {
     author: 'johndoe',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe'],
+      votes: ['johndoe','sarahedo'],
       text: 'write JavaScript',
     },
     optionTwo: {

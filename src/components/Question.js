@@ -6,6 +6,7 @@ import ShadowWrapper from 'react-shadow-wrapper';
 import {handleAnswerQuestion} from '../actions/questions';
 
 class Question extends Component {
+  
   handleAnswer = (e, answer) => {
     e.preventDefault ();
 
@@ -33,6 +34,7 @@ class Question extends Component {
   };
 
   render () {
+
     const {question} = this.props;
     console.log ('Question->render');
     console.log (question);

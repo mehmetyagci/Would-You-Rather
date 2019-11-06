@@ -7,7 +7,7 @@ export function formatDate(timestamp) {
 export function formatQuestion(question, author, authorUser, answered) {
 
   const { id, optionOne, optionTwo, timestamp } = question
-  console.log("utils->helper->formatQuestion", question);
+  // console.log("utils->helper->formatQuestion", question);
 
   return {
     id,
