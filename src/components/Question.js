@@ -27,13 +27,6 @@ class Question extends Component {
     );
   };
 
-  toParent = (e, id) => {
-    e.preventDefault ();
-    this.props.history.push (`/question/${id}`);
-    // todo: Redirect to parent Tweet.
-    console.log (`Question->toParent:e:${e} id:${id}`);
-  };
-
   render () {
     const {question} = this.props;
     console.log ('Question->render');
@@ -108,4 +101,4 @@ function mapStateToProps ({authedUser, users, questions}, {id}) {
   };
 }
 
-export default connect (mapStateToProps) (Question);
+export default withRouter (connect (mapStateToProps) (Question));
