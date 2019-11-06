@@ -8,7 +8,7 @@ class NewQuestion extends Component {
   state = {
     optionOne: "",
     optionTwo: "",
-    toHome: false
+    toHome: false,
   };
 
   handleOptionOneChange = e => {
