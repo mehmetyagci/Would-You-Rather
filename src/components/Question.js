@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {formatQuestion} from '../utils/helpers';
 import ShadowWrapper from 'react-shadow-wrapper';
+import { Link, withRouter } from 'react-router-dom'
 
 import {handleAnswerQuestion} from '../actions/questions';
 
@@ -29,6 +30,7 @@ class Question extends Component {
 
   toParent = (e, id) => {
     e.preventDefault ();
+    this.props.history.push(`/question/${id}`)
     // todo: Redirect to parent Tweet.
     console.log (`Question->toParent:e:${e} id:${id}`);
   };

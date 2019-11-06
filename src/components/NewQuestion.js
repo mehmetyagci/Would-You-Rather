@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import { handleAddQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
   state = {
     optionOne: "",
-    optionTwo: ""
+    optionTwo: "",
+    toHome: false
   };
 
   handleOptionOneChange = e => {
@@ -43,15 +45,16 @@ class NewQuestion extends Component {
 
     this.setState(() => ({
       optionOne: "",
-      optionTwo: ""
+      optionTwo: "",
+      toHome: true
     }));
   };
 
   render() {
-    const { optionOne, optionTwo } = this.state;
+    const { optionOne, optionTwo, toHome } = this.state;
 
-    {
-      /* todo: Redicect to / if submitted */
+    if (toHome === true) {
+      return <Redirect to="/" />;
     }
 
     return (
