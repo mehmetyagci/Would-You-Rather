@@ -6,10 +6,11 @@ export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 export const ADD_QUESTION = 'ADD_QUESTION';
 
 
-function addQuestion (question) {
+function addQuestion (question,authedUser) {
   return {
     type: ADD_QUESTION,
     question,
+    authedUser,
   };
 }
 
@@ -24,7 +25,7 @@ export function handleAddQuestion (optionOne, optionTwo) {
       optionTwoText: optionTwo,
       author: authedUser,
     })
-      .then (question => dispatch (addQuestion (question)))
+      .then (question => dispatch (addQuestion (question,authedUser)))
       .then (() => dispatch (hideLoading ()));
   };
 }
