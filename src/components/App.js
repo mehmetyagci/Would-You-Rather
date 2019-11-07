@@ -9,6 +9,7 @@ import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
+import Login  from './Login';
 
 class App extends Component {
   componentDidMount () {
@@ -26,10 +27,7 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-                  <Route path="/" exact component={Dashboard} />
-                  <Route path="/question/:id" component={QuestionPage} />
-                  <Route path="/new" component={NewQuestion} />
-                  <Route path="/leaderboard" component={Leaderboard} />
+                 <Login />
                 </div>}
           </div>
         </Fragment>
