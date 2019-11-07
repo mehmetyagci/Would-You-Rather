@@ -39,7 +39,7 @@ class Question extends Component {
 
     return (
       <ShadowWrapper>
-        <div className="ui image">
+        <div className="ui image medium">
           <img
             src={question.author.avatarURL}
             alt={`Avatar of ${question.author.name}`}

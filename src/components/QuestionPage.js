@@ -37,7 +37,7 @@ class QuestionPage extends Component {
           <div>
             <p>{authedUser} Answered this poll</p>
           </div>
-          <div className="ui image">
+          <div className="ui image medium">
             <img
               src={questionUser.avatarURL}
               alt={`Avatar of ${questionUser.name}`}
@@ -87,7 +87,7 @@ class QuestionPage extends Component {
           <div>
             <p>{authedUser} Not Answered this poll</p>
           </div>
-          <div className="ui image">
+          <div className="ui image medium">
             <img
               src={questionUser.avatarURL}
               alt={`Avatar of ${questionUser.name}`}
