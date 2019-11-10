@@ -1,76 +1,57 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Dropdown } from "semantic-ui-react";
-import { Redirect, withRouter } from "react-router-dom";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Dropdown} from 'semantic-ui-react';
 
-import { setAuthedUser } from "../actions/authedUser";
+import {setAuthedUser} from '../actions/authedUser';
 
 class Login extends Component {
   state = {
     userId: null,
-    loginFail: false
+    loginFail: false,
   };
 
   handleSelectUser = (event, data) => {
-    console.log("Login->handleSelectUser->data.value:", data.value);
-    this.setState({ userId: data.value, loginFail: false });
+    console.log ('Login->handleSelectUser->data.value:', data.value);
+    this.setState ({userId: data.value, loginFail: false});
   };
 
   handleLogin = () => {
-    const { userId } = this.state;
-    console.log("Login->handleLogin->userId:", userId);
-    const { setAuthedUser } = this.props;
-    console.log("Login->handleLogin->setAuthedUser:", setAuthedUser);
+    const {userId} = this.state;
+    console.log ('Login->handleLogin->userId:', userId);
+    const {setAuthedUser} = this.props;
+    console.log ('Login->handleLogin->setAuthedUser:', setAuthedUser);
     if (userId) {
-      setAuthedUser(userId);
-      this.setState({
-        loginFail: false
+      setAuthedUser (userId);
+      this.setState ({
+        loginFail: false,
       });
     } else {
-      this.setState({
-        loginFail: true
+      this.setState ({
+        loginFail: true,
       });
       return;
     }
-
-    // if (!this.state.userId) {
-    //   this.setState({
-    //     errorMessage: "Please Select a User"
-    //   });
-    //   return;
-    // } else {
-    //   this.setState({
-    //     userId: null,
-    //     errorMessage: ""
-    //   });
-    //   //history.push("/");
-    // }
-
-    // this.props.setAuthedUser(this.state.userId);
-    // if (this.referrer === "/logout" || this.referrer === "/login") {
-    //   history.push("/");
-    // } else {
-    //   history.push(this.referrer);
-    // }
   };
 
-  render() {
-    console.log("Login->this.props", this.props);
+  render () {
+    console.log ('Login->this.props', this.props);
 
-    const { users } = this.props;
+    const {users} = this.props;
+    const {userId} = this.state;
+
     if (!users) {
       return <p>Users not found!</p>;
     }
 
-    const userOptions = Object.keys(users).map(userId => ({
-      key: userId,
-      value: userId,
-      text: users[userId].name,
-      image: { avatar: true, src: users[userId].avatarURL }
+    const userOptions = Object.keys (users).map (user => ({
+      key: user,
+      value: user,
+      text: users[user].name,
+      image: {avatar: true, src: users[user].avatarURL},
     }));
 
     return (
-      <div className="ui container" style={{ marginTop: "50px" }}>
+      <div className="ui container" style={{marginTop: '50px'}}>
         <div className="ui middle aligned center aligned grid">
           <div className="column">
             <h2 className="ui image header">
@@ -89,19 +70,21 @@ class Login extends Component {
                   />
                 </div>
 
-                {this.state.loginFail && (
+                {this.state.loginFail &&
                   <div
                     className="ui error message"
                     style={{
-                      display: this.state.loginFail ? "block" : "none"
+                      display: this.state.loginFail ? 'block' : 'none',
                     }}
                   >
                     <p>Please Select User!</p>
-                  </div>
-                )}
+                  </div>}
 
                 <div
-                  className="ui fluid large submit button teal"
+                  className={
+                    'ui fluid large submit button teal ' +
+                      (userId === null || userId === '' ? 'disabled' : '')
+                  }
                   onClick={this.handleLogin}
                 >
                   Login
@@ -115,22 +98,19 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({users}) {
   //console.log("mapStateToProps", users);
   return {
-    users
+    users,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     setAuthedUser: id => {
-      dispatch(setAuthedUser(id));
-    }
+      dispatch (setAuthedUser (id));
+    },
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default connect (mapStateToProps, mapDispatchToProps) (Login);
