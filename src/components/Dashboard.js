@@ -7,47 +7,62 @@ import {VisibilityFilters, setVisibilityFilter} from '../actions/questions';
 
 class Dashboard extends Component {
   handleSend = message => {
+    console.log ('Dashboard->handleSend->message:', message);
     this.props.setVisibilityFilter (message);
   };
 
   render () {
     console.log ('Dashboard->render:this.props', this.props);
+    console.log ('Dashboard->render:this.props.filter', this.props.filter);
     return (
       <div>
+
         <div className="ui divided list">
-          <div className="item">
-            <div className="ui segment">
-              <div className="ui right buttons">
-                <div
-                  className="ui button"
-                  onClick={() =>
-                    this.props.setVisibilityFilter (
-                      VisibilityFilters.SHOW_UNANSWERED
-                    )}
-                >
-                  Unanswered
-                </div>
-                <div className="or" />
-                <div
-                  className="ui button"
-                  onClick={() =>
-                    this.props.setVisibilityFilter (
-                      VisibilityFilters.SHOW_ANSWERED
-                    )}
-                >
-                  Answered
-                </div>
-              </div>
+
+          <div
+            className="ui right buttons"
+            style={{display: 'flex'}}
+          >
+            <div
+              className={
+                'ui button teal ' +
+                  (this.props.filter === VisibilityFilters.SHOW_UNANSWERED
+                    ? 'active'
+                    : '')
+              }
+              onClick={() =>
+                this.props.setVisibilityFilter (
+                  VisibilityFilters.SHOW_UNANSWERED
+                )}
+            >
+              Unanswered
+            </div>
+            <div className="or" />
+            <div
+              className={
+                'ui button teal ' +
+                  (this.props.filter === VisibilityFilters.SHOW_ANSWERED
+                    ? 'active'
+                    : '')
+              }
+              onClick={() =>
+                this.props.setVisibilityFilter (
+                  VisibilityFilters.SHOW_ANSWERED
+                )}
+            >
+              Answered
             </div>
           </div>
+
         </div>
 
-        <div className="ui items">
+        <div className="ui divided items">
           {Object.values (this.props.questions).map (question => (
             <div className="item" key={question.id}>
               <Question id={question.id} />
             </div>
           ))}
+          <br />
         </div>
       </div>
     );
@@ -55,24 +70,21 @@ class Dashboard extends Component {
 }
 
 const getVisibleQuestions = (questions, authedUser, filter) => {
-  console.log ('getVisibleTodos->questions:', questions);
-  console.log ('getVisibleTodos->filter:', authedUser);
-  console.log ('getVisibleTodos->filter:', filter);
+  // console.log ('getVisibleTodos->questions:', questions);
+  // console.log ('getVisibleTodos->authedUser:', authedUser);
+  // console.log ('getVisibleTodos->filter:', filter);
 
   switch (filter) {
     case VisibilityFilters.SHOW_ANSWERED:
       var answeredQuestions = Object.values (questions).filter (function (q) {
-        console.log ('inner query1:', q);
+        //console.log ('inner query1:', q);
         return (
           q.optionOne.votes.includes (authedUser) ||
           q.optionTwo.votes.includes (authedUser)
         );
       });
-      console.log ('answeredQuestions1:', answeredQuestions);
-      console.log (
-        'answeredQuestions[0].timestamp:',
-        answeredQuestions[0].timestamp
-      );
+      //console.log ('answeredQuestions1:', answeredQuestions);
+      //console.log ('answeredQuestions[0].timestamp:',answeredQuestions[0].timestamp);
       //return answeredQuestions;
 
       //answeredQuestions.sort((a, b) => b.last_nom.localeCompare(b.last_nom));
@@ -80,15 +92,15 @@ const getVisibleQuestions = (questions, authedUser, filter) => {
       var answeredQuestionsSorted = answeredQuestions.sort (
         (a, b) => b.timestamp - a.timestamp
       );
-      console.log ('answeredQuestionsSorted2:', answeredQuestionsSorted);
+      //console.log ('answeredQuestionsSorted2:', answeredQuestionsSorted);
       return answeredQuestionsSorted;
     default:
       var unansweredQuestions = Object.values (questions).filter (function (q) {
-        console.log ('inner query2:', q);
+        //console.log ('inner query2:', q);
         return !(q.optionOne.votes.includes (authedUser) ||
           q.optionTwo.votes.includes (authedUser));
       });
-      console.log ('unansweredQuestions1:', unansweredQuestions);
+      //console.log ('unansweredQuestions1:', unansweredQuestions);
       var unansweredQuestionsSorted = unansweredQuestions.sort (
         (a, b) => b.timestamp - a.timestamp
       );
@@ -102,23 +114,9 @@ const mapStateToProps = state => ({
     state.authedUser,
     state.visibilityFilter
   ),
+  filter: state.visibilityFilter,
 });
 
-// function mapStateToProps({authedUser, questions}) {
-//   return {
-//     loading: questions === null,
-//     authenticated: authedUser !== null,
-//     authedUser,
-//   };
-// }
-
-// function mapStateToProps({authedUser, questions}) {
-//   return {
-//     loading: questions === null,
-//     authenticated: authedUser !== null,
-//     authedUser,
-//   };
-// }
 function mapDispatchToProps (dispatch) {
   return {
     setVisibilityFilter: bindActionCreators (setVisibilityFilter, dispatch),

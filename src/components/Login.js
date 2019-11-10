@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Dropdown} from 'semantic-ui-react';
 
 import {setAuthedUser} from '../actions/authedUser';
+import {VisibilityFilters, setVisibilityFilter} from '../actions/questions';
 
 class Login extends Component {
   state = {
@@ -11,17 +12,18 @@ class Login extends Component {
   };
 
   handleSelectUser = (event, data) => {
-    console.log ('Login->handleSelectUser->data.value:', data.value);
+    //console.log ('Login->handleSelectUser->data.value:', data.value);
     this.setState ({userId: data.value, loginFail: false});
   };
 
   handleLogin = () => {
     const {userId} = this.state;
-    console.log ('Login->handleLogin->userId:', userId);
-    const {setAuthedUser} = this.props;
-    console.log ('Login->handleLogin->setAuthedUser:', setAuthedUser);
+    //console.log ('Login->handleLogin->userId:', userId);
+    const {setAuthedUser, setVisibilityFilter} = this.props;
+    //console.log ('Login->handleLogin->setAuthedUser:', setAuthedUser);
     if (userId) {
       setAuthedUser (userId);
+      setVisibilityFilter (VisibilityFilters.SHOW_UNANSWERED);
       this.setState ({
         loginFail: false,
       });
@@ -109,6 +111,9 @@ function mapDispatchToProps (dispatch) {
   return {
     setAuthedUser: id => {
       dispatch (setAuthedUser (id));
+    },
+    setVisibilityFilter: filter => {
+      dispatch (setVisibilityFilter (filter));
     },
   };
 }

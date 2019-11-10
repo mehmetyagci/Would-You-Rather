@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import ShadowWrapper from 'react-shadow-wrapper';
 import {Link, withRouter} from 'react-router-dom';
 
 import {formatQuestion} from '../utils/helpers';
@@ -38,8 +37,8 @@ class Question extends Component {
     }
 
     return (
-      <ShadowWrapper>
-        <div className="ui image medium">
+      <Fragment>
+        <div className="image">
           <img
             src={question.author.avatarURL}
             alt={`Avatar of ${question.author.name}`}
@@ -49,34 +48,29 @@ class Question extends Component {
         <div className="content">
           <div className="header"> {question.author.name} asked:</div>
           <div className="meta">
-            <h1> Would you rather </h1>
-          </div>
-
-          <hr />
-
-          <div className="description">
-            <h2>{question.optionOne.text}</h2>
-          </div>
-
-          <br />
-          <div>
-            <h3>...OR...</h3>
+            <span> Would you rather </span>
           </div>
           <br />
-          <div className="description">
-            <h2>{question.optionTwo.text}</h2>
+          <div className="middle aligned content">
+            {question.optionOne.text}
+          </div>
+          <div className="extra">
+            ...OR...
+          </div>
+          <div className="middle aligned content">
+            {question.optionTwo.text}
           </div>
           <br />
-          <div>
+          <div className="bottom aligned">
             <Link to={`/question/${question.id}`}>
-
-              <button>
+              <button className="ui fluid large submit button teal">
                 View Poll
               </button>
             </Link>
           </div>
         </div>
-      </ShadowWrapper>
+        <br />
+      </Fragment>
     );
   }
 }
