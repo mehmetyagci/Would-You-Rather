@@ -54,28 +54,71 @@ class Dashboard extends Component {
   }
 }
 
-const getVisibleQuestions = (questions, filter) => {
+const getVisibleQuestions = (questions, authedUser, filter) => {
   console.log ('getVisibleTodos->questions:', questions);
+  console.log ('getVisibleTodos->filter:', authedUser);
   console.log ('getVisibleTodos->filter:', filter);
 
   switch (filter) {
     case VisibilityFilters.SHOW_ANSWERED:
-      return Object.values (questions).filter (function (q) {
-        console.log ('inner query:', q);
-        return q.optionOne.votes.length + q.optionTwo.votes.length > 0;
+      var answeredQuestions = Object.values (questions).filter (function (q) {
+        console.log ('inner query1:', q);
+        return (
+          q.optionOne.votes.includes (authedUser) ||
+          q.optionTwo.votes.includes (authedUser)
+        );
       });
+      console.log ('answeredQuestions1:', answeredQuestions);
+      console.log (
+        'answeredQuestions[0].timestamp:',
+        answeredQuestions[0].timestamp
+      );
+      //return answeredQuestions;
+
+      //answeredQuestions.sort((a, b) => b.last_nom.localeCompare(b.last_nom));
+
+      var answeredQuestionsSorted = answeredQuestions.sort (
+        (a, b) => b.timestamp - a.timestamp
+      );
+      console.log ('answeredQuestionsSorted2:', answeredQuestionsSorted);
+      return answeredQuestionsSorted;
     default:
-      return Object.values (questions).filter (function (q) {
-        console.log ('inner query:', q);
-        return q.optionOne.votes.length + q.optionTwo.votes.length === 0;
+      var unansweredQuestions = Object.values (questions).filter (function (q) {
+        console.log ('inner query2:', q);
+        return !(q.optionOne.votes.includes (authedUser) ||
+          q.optionTwo.votes.includes (authedUser));
       });
+      console.log ('unansweredQuestions1:', unansweredQuestions);
+      var unansweredQuestionsSorted = unansweredQuestions.sort (
+        (a, b) => b.timestamp - a.timestamp
+      );
+      return unansweredQuestionsSorted;
   }
 };
 
 const mapStateToProps = state => ({
-  questions: getVisibleQuestions (state.questions, state.visibilityFilter),
+  questions: getVisibleQuestions (
+    state.questions,
+    state.authedUser,
+    state.visibilityFilter
+  ),
 });
 
+// function mapStateToProps({authedUser, questions}) {
+//   return {
+//     loading: questions === null,
+//     authenticated: authedUser !== null,
+//     authedUser,
+//   };
+// }
+
+// function mapStateToProps({authedUser, questions}) {
+//   return {
+//     loading: questions === null,
+//     authenticated: authedUser !== null,
+//     authedUser,
+//   };
+// }
 function mapDispatchToProps (dispatch) {
   return {
     setVisibilityFilter: bindActionCreators (setVisibilityFilter, dispatch),

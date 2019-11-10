@@ -4,20 +4,20 @@ let users = {
     name: 'Sarah Edo',
     avatarURL: 'https://semantic-ui.com/images/avatar2/large/rachel.png',
     answers: {
-      '8xf0y6ziyjabvozdd253nd': 'optionOne',
-      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
-      am8ehyc8byjqgar0jgpub9: 'optionTwo',
-      loxhs1bqm25b708cmbf3g: 'optionTwo',
+      "8xf0y6ziyjabvozdd253nd": 'optionOne',
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
+      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
+      "loxhs1bqm25b708cmbf3g": 'optionTwo'
     },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9'],
+    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
     avatarURL: 'https://semantic-ui.com/images/avatar2/large/mark.png',
     answers: {
-      vthrdm985a262al8qx3do: 'optionOne',
-      xj352vofupe1dqz9emx13r: 'optionTwo',
+      "vthrdm985a262al8qx3do": 'optionOne',
+      "xj352vofupe1dqz9emx13r": 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
@@ -26,13 +26,13 @@ let users = {
     name: 'John Doe',
     avatarURL: 'https://semantic-ui.com/images/avatar2/large/patrick.png',
     answers: {
-      xj352vofupe1dqz9emx13r: 'optionOne',
-      vthrdm985a262al8qx3do: 'optionTwo',
-      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
+      "xj352vofupe1dqz9emx13r": 'optionOne',
+      "vthrdm985a262al8qx3do": 'optionTwo',
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
-  },
-};
+  }
+}
 
 let questions = {
   '8xf0y6ziyjabvozdd253nd': {
@@ -40,7 +40,7 @@ let questions = {
     author: 'sarahedo',
     timestamp: 1467166872634,
     optionOne: {
-      votes: [],
+      votes: ['sarahedo'],
       text: 'have horrible short term memory',
     },
     optionTwo: {
@@ -57,7 +57,7 @@ let questions = {
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: [],
+      votes: ['johndoe', 'sarahedo'],
       text: 'become a supervillain',
     },
   },
@@ -70,7 +70,7 @@ let questions = {
       text: 'be telekinetic',
     },
     optionTwo: {
-      votes: [],
+      votes: ['sarahedo'],
       text: 'be telepathic',
     },
   },
@@ -92,11 +92,11 @@ let questions = {
     author: 'tylermcginnis',
     timestamp: 1489579767190,
     optionOne: {
-      votes: [],
+      votes: ['tylermcginnis'],
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['tylermcginnis'],
+      votes: ['johndoe'],
       text: 'have your best friend find $500',
     },
   },
@@ -105,7 +105,7 @@ let questions = {
     author: 'johndoe',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe','sarahedo'],
+      votes: ['johndoe'],
       text: 'write JavaScript',
     },
     optionTwo: {
