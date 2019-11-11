@@ -1,42 +1,41 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import User from './User';
+import User from "./User";
 
 class Leaderboard extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <h1> Leaderboard </h1>
-        <ul className="dashboard-list">
-          {this.props.userIds.map (id => (
-            <li key={id}>
-              <User id={id} />
-            </li>
+        <div className="ui divided list">
+          {this.props.userIds.map((id, index) => (
+            <div className="item" key={id}>
+              <User id={id} rank={index + 1} />
+            </div>
           ))}
-        </ul>
-
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({users}) {
-  console.log ('mapStateToProps', users);
-  console.log ('users[0].questions.length:', users['johndoe'].questions.length);
+function mapStateToProps({ users }) {
+  console.log("mapStateToProps", users);
+  console.log("users[0].questions.length:", users["johndoe"].questions.length);
 
-  console.log (
-    'users[0].answers.length:',
-    Object.keys (users['johndoe'].answers).length
+  console.log(
+    "users[0].answers.length:",
+    Object.keys(users["johndoe"].answers).length
   );
 
   return {
-    userIds: Object.keys (users).sort (
+    userIds: Object.keys(users).sort(
       (a, b) =>
-        (users[b].questions.length + Object.keys (users[b].answers).length) -
-        (users[a].questions.length + Object.keys (users[a].answers).length)
-    ),
+        users[b].questions.length +
+        Object.keys(users[b].answers).length -
+        (users[a].questions.length + Object.keys(users[a].answers).length)
+    )
   };
 }
 
-export default connect (mapStateToProps) (Leaderboard);
+export default connect(mapStateToProps)(Leaderboard);

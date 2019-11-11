@@ -40,11 +40,11 @@ class QuestionPage extends Component {
           <div className="row">
             <div className="four wide floated column">
               <div className="header">
-                <h1 class="ui header">{questionUser.name} asked:</h1>
+                <h1 className="ui header">{questionUser.name} asked:</h1>
               </div>
             </div>
             <div className="twelve wide floated column">
-              <h1 class="ui header">Results:</h1>
+              <h1 className="ui header">Results:</h1>
             </div>
           </div>
 
@@ -118,11 +118,11 @@ class QuestionPage extends Component {
           <div className="row">
             <div className="four wide floated column">
               <div className="header">
-                <h1 class="ui header">{questionUser.name} asked:</h1>
+                <h1 className="ui header">{questionUser.name} asked:</h1>
               </div>
             </div>
             <div className="twelve wide floated column">
-              <h1 class="ui header">Would You Rather...</h1>
+              <h1 className="ui header">Would You Rather...</h1>
             </div>
           </div>
 
