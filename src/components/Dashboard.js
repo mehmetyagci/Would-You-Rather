@@ -6,11 +6,6 @@ import {bindActionCreators} from 'redux';
 import {VisibilityFilters, setVisibilityFilter} from '../actions/questions';
 
 class Dashboard extends Component {
-  handleSend = message => {
-    console.log ('Dashboard->handleSend->message:', message);
-    this.props.setVisibilityFilter (message);
-  };
-
   render () {
     console.log ('Dashboard->render:this.props', this.props);
     console.log ('Dashboard->render:this.props.filter', this.props.filter);
@@ -19,10 +14,7 @@ class Dashboard extends Component {
 
         <div className="ui divided list">
 
-          <div
-            className="ui right buttons"
-            style={{display: 'flex'}}
-          >
+          <div className="ui right buttons" style={{display: 'flex'}}>
             <div
               className={
                 'ui button teal ' +

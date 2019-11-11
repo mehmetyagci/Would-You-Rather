@@ -29,13 +29,11 @@ class Question extends Component {
                         <p>{question.optionTwo.text}</p>
                     </div>
 
-                    <div class="ui divider"></div>
+                    <div className="ui divider"></div>
 
                     <div className="extra content">
 
-                    <div class="ui submit button">Register</div>
-
-
+                    <div className="ui submit button">Register</div>
                         
                     </div>
                 </div>

@@ -20,7 +20,7 @@ class Nav extends Component {
     console.log ('Nav->render->authedUser:', authedUser);
 
     return (
-      <div className="ui secondary menu">
+      <div className="ui secondary menu teal">
 
         <NavLink className="item" to="/" exact activeClassName="active">
           Home

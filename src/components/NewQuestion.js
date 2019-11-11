@@ -1,85 +1,93 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-import { handleAddQuestion } from "../actions/questions";
+import {handleAddQuestion} from '../actions/questions';
 
 class NewQuestion extends Component {
   state = {
-    optionOne: "",
-    optionTwo: "",
+    optionOne: '',
+    optionTwo: '',
     toHome: false,
   };
 
   handleOptionOneChange = e => {
     const optionOne = e.target.value;
 
-    this.setState(() => ({
-      optionOne
+    this.setState (() => ({
+      optionOne,
     }));
 
-    console.log(this.state.optionOne);
+    console.log (this.state.optionOne);
   };
 
   handleOptionTwoChange = e => {
     const optionTwo = e.target.value;
 
-    this.setState(() => ({
-      optionTwo
+    this.setState (() => ({
+      optionTwo,
     }));
 
-    console.log(this.state.optionTwo);
+    console.log (this.state.optionTwo);
   };
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault ();
 
-    const { optionOne, optionTwo } = this.state;
-    const { dispatch } = this.props;
+    const {optionOne, optionTwo} = this.state;
+    const {dispatch} = this.props;
 
     // todo: Add New Question to the Store
 
-    console.log("New Question: ", optionOne + " - " + optionTwo);
+    console.log ('New Question: ', optionOne + ' - ' + optionTwo);
 
-    dispatch(handleAddQuestion(optionOne, optionTwo));
+    dispatch (handleAddQuestion (optionOne, optionTwo));
 
-    this.setState(() => ({
-      optionOne: "",
-      optionTwo: "",
-      toHome: true
+    this.setState (() => ({
+      optionOne: '',
+      optionTwo: '',
+      toHome: true,
     }));
   };
 
-  render() {
-    const { optionOne, optionTwo, toHome } = this.state;
+  render () {
+    const {optionOne, optionTwo, toHome} = this.state;
 
     if (toHome === true) {
       return <Redirect to="/" />;
     }
 
     return (
-      <div>
-        <h3>New Question</h3>
-        <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="ui form">
+        <h2 className="ui dividing header">Create New Question</h2>
+        <h3 className="">Woud you rather... </h3>
+        <div className="field">
+          <label>Option One</label>
           <input
             value={optionOne}
             placeholder="Option One"
             onChange={this.handleOptionOneChange}
           />
-          <br />
+        </div>
+        <div className="field">
+          <label>Option Two</label>
           <input
             value={optionTwo}
             placeholder="Option Two"
             onChange={this.handleOptionTwoChange}
           />
-          <br />
-          <button disabled={optionOne === "" || optionTwo === ""}>
+        </div>
+        <div>
+          <button
+            className="ui button teal"
+            disabled={optionOne === '' || optionTwo === ''}
+          >
             Submit
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }
 
-export default connect()(NewQuestion);
+export default connect () (NewQuestion);
