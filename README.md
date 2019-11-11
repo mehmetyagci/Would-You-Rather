@@ -24,9 +24,9 @@ For reference, this project was bootstrapped with [Create React App](https://git
 
 ## Usage
 
-- Home Page
+- Home
   - shows polls divided in 2 sections, answered and unanswered
-- Create Poll
+- Create Question
   - is used to submit new polls
 - Poll Details View
   - is used to answer a poll or to view responses of all users/ statistics for a question
