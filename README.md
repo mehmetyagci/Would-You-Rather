@@ -2,12 +2,8 @@
 
 Would You Rather is the second project for the Udacity React Nanodegree program. The application created using React, Redux, React Router, Semantic UI etc... This application is a recreation of the classic game, Would You Rather. A user can login and submit reponses to the number of different Would You Rather questions that have been asked. A user can also add new questions to be answered as well as see where they rank among all users on the questions asked/answered Leaderboards. 
 
-![Login](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/login.png)
-![Would Your Rather - React Redux app](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/home.png)
-![Question Results](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/questionresult.png)
-![Answer Question](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/answerquestion.png)
-![New Question](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/newquestion.png)
-![Leaderboard](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/leaderboard.png)
+
+
 
 ## Installation
 
@@ -23,19 +19,34 @@ In the project directory, you can run:
 
 For reference, this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Usage
-
-- Home
-  - shows polls divided in 2 sections, answered and unanswered
-- Create Question
-  - is used to submit new polls
-- Poll Details View
-  - is used to answer a poll or to view responses of all users/ statistics for a question
-- LeaderBoard
-  - shows ranking of users based on total number of answered and unanswered polls
-- Login
+## Login
   - Select a user as auth user  
+![Login](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/login.png)
 
+## Home
+  - shows polls divided in 2 sections, answered and unanswered
+![Would Your Rather Home - React Redux app](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/home.png)
+
+## Create Question
+  - is used to submit new poll
+![New Question](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/newquestion.png)
+
+## Poll Details View
+  - is used to answer a poll or to view responses of all users/ statistics for a question
+
+# Unanswered Questions 
+![Answer Question](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/answerquestion.png)
+
+# Answered Questions   
+![Question Results](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/questionresult.png)
+
+## LeaderBoard
+  - shows ranking of users based on total number of answered and unanswered polls
+![Leaderboard](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/leaderboard.png)
+
+
+## Logout
+  - Clicking the logout the user is logged out and the login page is shown.
 
 ## Backend Server
 
