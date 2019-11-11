@@ -1,38 +1,27 @@
-import React, {Component, Fragment} from 'react';
-import {connect} from 'react-redux';
-import {Link, withRouter} from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
 
-import {formatQuestion} from '../utils/helpers';
-import {handleAnswerQuestion} from '../actions/questions';
+import { formatQuestion } from "../utils/helpers";
+import { handleAnswerQuestion } from "../actions/questions";
 
 class Question extends Component {
   handleAnswer = (e, answer) => {
-    e.preventDefault ();
-
-    const {dispatch, question, authedUser} = this.props;
-
-    // console.log (`Question->handleAnswer1:this.props:`);
-    // console.log (this.props);
-    // console.log (Object.keys(this.props));
-    // console.log (Object.values(this.props));
-    // console.log (`Question->handleAnswer2:question:${question} autherUser:${authedUser}`);
-
-    dispatch (
-      handleAnswerQuestion ({
+    e.preventDefault();
+    const { dispatch, question, authedUser } = this.props;
+    dispatch(
+      handleAnswerQuestion({
         id: question.id,
         answer: answer,
-        authedUser,
+        authedUser
       })
     );
   };
 
-  render () {
-    const {question} = this.props;
-    console.log ('Question->render');
-    console.log (question);
+  render() {
+    const { question } = this.props;
 
     if (question == null) {
-      // TODO: this line go to 404 page
       return <p>This Question doesn't exist</p>;
     }
 
@@ -54,9 +43,7 @@ class Question extends Component {
           <div className="middle aligned content">
             {question.optionOne.text}
           </div>
-          <div className="extra">
-            ...OR...
-          </div>
+          <div className="extra">...OR...</div>
           <div className="middle aligned content">
             {question.optionTwo.text}
           </div>
@@ -75,24 +62,18 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps ({authedUser, users, questions}, {id}) {
+function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
-  console.log (`components->Question->mapStateToProps->question:${question}`);
-  const answered = question.optionOne.votes.length +
-    question.optionTwo.votes.length >
-    0
-    ? true
-    : false;
-  console.log (
-    `optionOne.votes:${question.optionOne.votes.length} optionTwo.votes:${question.optionTwo.votes.length} answered:${answered}`
-  );
-
+  const answered =
+    question.optionOne.votes.length + question.optionTwo.votes.length > 0
+      ? true
+      : false;
   return {
     authedUser,
     question: question
-      ? formatQuestion (question, users[question.author], authedUser, answered)
-      : null,
+      ? formatQuestion(question, users[question.author], authedUser, answered)
+      : null
   };
 }
 
-export default withRouter (connect (mapStateToProps) (Question));
+export default withRouter(connect(mapStateToProps)(Question));

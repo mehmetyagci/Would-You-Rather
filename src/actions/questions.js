@@ -42,7 +42,6 @@ function answerQuestion({id, authedUser, answer}) {
 }
 
 export function handleAnswerQuestion (info) {
-  console.log("handleAnswerQuestion", info);
   return dispatch => {
     dispatch (answerQuestion (info));
 

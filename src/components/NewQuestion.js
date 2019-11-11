@@ -18,7 +18,6 @@ class NewQuestion extends Component {
       optionOne,
     }));
 
-    console.log (this.state.optionOne);
   };
 
   handleOptionTwoChange = e => {
@@ -28,7 +27,6 @@ class NewQuestion extends Component {
       optionTwo,
     }));
 
-    console.log (this.state.optionTwo);
   };
 
   handleSubmit = e => {
@@ -36,10 +34,6 @@ class NewQuestion extends Component {
 
     const {optionOne, optionTwo} = this.state;
     const {dispatch} = this.props;
-
-    // todo: Add New Question to the Store
-
-    console.log ('New Question: ', optionOne + ' - ' + optionTwo);
 
     dispatch (handleAddQuestion (optionOne, optionTwo));
 

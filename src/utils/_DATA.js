@@ -123,21 +123,18 @@ function generateUID () {
 }
 
 export function _getUsers () {
-  //console.log ('_DATA->_getUsers()');
   return new Promise ((res, rej) => {
     setTimeout (() => res ({...users}), 1000);
   });
 }
 
 export function _getQuestions () {
-  //console.log ('_DATA->_getQuestions()');
   return new Promise ((res, rej) => {
     setTimeout (() => res ({...questions}), 1000);
   });
 }
 
 function formatQuestion({optionOneText, optionTwoText, author}) {
-  //console.log(`formatQuestion->optionOneText:${optionOneText}, optionTwoText:${optionTwoText}, author:${author}`);
   return {
     id: generateUID (),
     timestamp: Date.now (),
@@ -154,8 +151,6 @@ function formatQuestion({optionOneText, optionTwoText, author}) {
 }
 
 export function _saveQuestion (question) {
-  //console.log ('_DATA->_saveQuestion');
-  //console.log (question);
   return new Promise ((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion (question);
@@ -182,8 +177,6 @@ export function _saveQuestion (question) {
 }
 
 export function _saveQuestionAnswer({authedUser, id, answer}) {
-  // console.log (  `_DATA->_saveQuestionAnswer:authedUser:${authedUser} id:${id} answer:${answer} `);
-
   return new Promise ((res, rej) => {
     setTimeout (() => {
       users = {

@@ -8,8 +8,6 @@ class User extends Component {
     const questionsLength = questions.length;
     const answersLength = Object.keys(answers).length;
 
-    console.log("User->user:", user);
-
     if (user === null) return <p>This User doesn't exist</p>;
 
     return (

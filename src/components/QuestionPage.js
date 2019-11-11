@@ -33,7 +33,6 @@ class QuestionPage extends Component {
       question.optionOne.votes.includes(authedUser) ||
       question.optionTwo.votes.includes(authedUser);
 
-    console.log("userAnswered:", userAnswered);
     if (userAnswered) {
       return (
         <div className="ui grid internally celled">
@@ -163,12 +162,9 @@ class QuestionPage extends Component {
   }
 
   render() {
-    console.log("QuestionPage->render");
-    console.log(this.props);
     const { question } = this.props;
 
     if (question == null) {
-      // TODO: this line go to 404 page
       return <p>This Question doesn't exist</p>;
     }
     return <div>{this.renderQuestion()}</div>;

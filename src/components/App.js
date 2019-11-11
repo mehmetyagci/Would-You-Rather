@@ -20,15 +20,10 @@ import NotFound from './NotFound';
 class App extends Component {
   componentDidMount () {
     this.props.dispatch (handleInitialData ());
-    console.log ('App->componentDidMount', this.props);
   }
 
   render () {
     const {authedUser, authenticated} = this.props;
-
-    console.log ('App->render->authedUser1:', authedUser);
-    console.log ('App->render->authedUser2:', this.props.authedUser);
-
     return (
       <Router>
         <Fragment>

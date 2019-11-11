@@ -12,15 +12,12 @@ class Login extends Component {
   };
 
   handleSelectUser = (event, data) => {
-    //console.log ('Login->handleSelectUser->data.value:', data.value);
     this.setState ({userId: data.value, loginFail: false});
   };
 
   handleLogin = () => {
     const {userId} = this.state;
-    //console.log ('Login->handleLogin->userId:', userId);
     const {setAuthedUser, setVisibilityFilter} = this.props;
-    //console.log ('Login->handleLogin->setAuthedUser:', setAuthedUser);
     if (userId) {
       setAuthedUser (userId);
       setVisibilityFilter (VisibilityFilters.SHOW_UNANSWERED);
@@ -36,8 +33,6 @@ class Login extends Component {
   };
 
   render () {
-    console.log ('Login->this.props', this.props);
-
     const {users} = this.props;
     const {userId} = this.state;
 
@@ -101,7 +96,6 @@ class Login extends Component {
 }
 
 function mapStateToProps({users}) {
-  //console.log("mapStateToProps", users);
   return {
     users,
   };

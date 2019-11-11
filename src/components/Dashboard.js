@@ -7,8 +7,6 @@ import {VisibilityFilters, setVisibilityFilter} from '../actions/questions';
 
 class Dashboard extends Component {
   render () {
-    console.log ('Dashboard->render:this.props', this.props);
-    console.log ('Dashboard->render:this.props.filter', this.props.filter);
     return (
       <div>
 
@@ -62,37 +60,23 @@ class Dashboard extends Component {
 }
 
 const getVisibleQuestions = (questions, authedUser, filter) => {
-  // console.log ('getVisibleTodos->questions:', questions);
-  // console.log ('getVisibleTodos->authedUser:', authedUser);
-  // console.log ('getVisibleTodos->filter:', filter);
-
   switch (filter) {
     case VisibilityFilters.SHOW_ANSWERED:
       var answeredQuestions = Object.values (questions).filter (function (q) {
-        //console.log ('inner query1:', q);
         return (
           q.optionOne.votes.includes (authedUser) ||
           q.optionTwo.votes.includes (authedUser)
         );
       });
-      //console.log ('answeredQuestions1:', answeredQuestions);
-      //console.log ('answeredQuestions[0].timestamp:',answeredQuestions[0].timestamp);
-      //return answeredQuestions;
-
-      //answeredQuestions.sort((a, b) => b.last_nom.localeCompare(b.last_nom));
-
       var answeredQuestionsSorted = answeredQuestions.sort (
         (a, b) => b.timestamp - a.timestamp
       );
-      //console.log ('answeredQuestionsSorted2:', answeredQuestionsSorted);
       return answeredQuestionsSorted;
     default:
       var unansweredQuestions = Object.values (questions).filter (function (q) {
-        //console.log ('inner query2:', q);
         return !(q.optionOne.votes.includes (authedUser) ||
           q.optionTwo.votes.includes (authedUser));
       });
-      //console.log ('unansweredQuestions1:', unansweredQuestions);
       var unansweredQuestionsSorted = unansweredQuestions.sort (
         (a, b) => b.timestamp - a.timestamp
       );

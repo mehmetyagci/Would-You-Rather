@@ -8,17 +8,13 @@ import {setAuthedUser} from '../actions/authedUser';
 class Nav extends Component {
   handleLogout = e => {
     e.preventDefault ();
-    console.log ('Nav->handleLogout');
     const {history, setAuthedUser} = this.props;
-    console.log ('history', history);
     history.push ('/');
     setAuthedUser (null);
   };
 
   render () {
     const {authenticated, authedUser, user} = this.props;
-    console.log ('Nav->render->authedUser:', authedUser);
-
     return (
       <div className="ui secondary menu teal">
 
@@ -57,8 +53,6 @@ class Nav extends Component {
 }
 
 function mapStateToProps({authedUser, users}) {
-  console.log ('Nav->mapStateToProps,authedUser', authedUser);
-
   return {
     authedUser,
     authenticated: authedUser !== null,

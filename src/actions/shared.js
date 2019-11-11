@@ -5,7 +5,6 @@ import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 // action creator
 export function handleInitialData() {
-  console.log("actions->shared->handleInitialData()");
   return dispatch => {
     dispatch(showLoading());
     return getInitialData().then(({ users, questions }) => {

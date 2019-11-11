@@ -2,12 +2,6 @@ import {RECEIVE_USERS} from '../actions/users';
 import {ANSWER_QUESTION, ADD_QUESTION} from '../actions/questions';
 
 export default function users (state = {}, action) {
-  //console.log ('reducers->users->');
-  //console.log (action);
-  //console.log (Object.keys (action));
-  //console.log (Object.values (action));
-  //console.log(state[action.authedUser]);
-
   switch (action.type) {
     case RECEIVE_USERS:
       return {
