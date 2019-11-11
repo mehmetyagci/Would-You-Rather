@@ -1,8 +1,12 @@
 ## Would You Rather...?
-Would You Rather is the second project for the Udacity React Nanodegree program. This application is a recreation of the classic game, Would You Rather. A user can login and submit reponses to the number of different Would You Rather questions that have been asked. A user can also add new questions to be answered as well as see where they rank among all users on the questions asked/answered Leaderboards. 
+Would You Rather is the second project for the Udacity React Nanodegree program. The application has been created using React, Redux  This application is a recreation of the classic game, Would You Rather. A user can login and submit reponses to the number of different Would You Rather questions that have been asked. A user can also add new questions to be answered as well as see where they rank among all users on the questions asked/answered Leaderboards. 
 
-![]()
-
+![Login](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/login.png)
+![Would Your Rather - React Redux app](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/home.png)
+![Question Results](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/questionresult.png)
+![Answer Question](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/answerquestion.png)
+![New Question](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/newquestion.png)
+![Leaderboard](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/leaderboard.png)
 
 ## Installation
 
@@ -29,7 +33,8 @@ For reference, this project was bootstrapped with [Create React App](https://git
 - LeaderBoard
   - shows ranking of users based on total number of answered and unanswered polls
 - Login
-  - Select a user as auth user 
+  - Select a user as auth user  
+
 
 ## Backend Server
 
