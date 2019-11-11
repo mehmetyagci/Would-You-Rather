@@ -1,5 +1,6 @@
 ## Would You Rather...?
-Would You Rather is the second project for the Udacity React Nanodegree program. The application has been created using React, Redux  This application is a recreation of the classic game, Would You Rather. A user can login and submit reponses to the number of different Would You Rather questions that have been asked. A user can also add new questions to be answered as well as see where they rank among all users on the questions asked/answered Leaderboards. 
+
+Would You Rather is the second project for the Udacity React Nanodegree program. The application created using React, Redux, React Router, Semantic UI etc... This application is a recreation of the classic game, Would You Rather. A user can login and submit reponses to the number of different Would You Rather questions that have been asked. A user can also add new questions to be answered as well as see where they rank among all users on the questions asked/answered Leaderboards. 
 
 ![Login](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/login.png)
 ![Would Your Rather - React Redux app](https://github.com/mehmetyagci/Would-You-Rather/blob/master/screenshots/home.png)
@@ -24,9 +25,9 @@ For reference, this project was bootstrapped with [Create React App](https://git
 
 ## Usage
 
-- Home Page
+- Home
   - shows polls divided in 2 sections, answered and unanswered
-- Create Poll
+- Create Question
   - is used to submit new polls
 - Poll Details View
   - is used to answer a poll or to view responses of all users/ statistics for a question
