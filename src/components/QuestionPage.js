@@ -39,9 +39,13 @@ class QuestionPage extends Component {
         <div className="ui grid internally celled">
           <div className="row">
             <div className="four wide floated column">
-              <div className="header">{questionUser.name} asked:</div>
+              <div className="header">
+                <h1 class="ui header">{questionUser.name} asked:</h1>
+              </div>
             </div>
-            <div className="eight wide floated column">Results:</div>
+            <div className="twelve wide floated column">
+              <h1 class="ui header">Results:</h1>
+            </div>
           </div>
 
           <div className="row">
@@ -53,9 +57,9 @@ class QuestionPage extends Component {
               />
             </div>
 
-            <div className="eight wide floated column">
+            <div className="twelve wide floated column">
               <div className="ui segment">
-                <h3 className="ui header">{question.optionOne.text}</h3>
+                <h2 className="ui header">{question.optionOne.text}</h2>
 
                 <span>
                   {question.optionOne.votes.includes(authedUser) && (
@@ -79,7 +83,7 @@ class QuestionPage extends Component {
                 </p>
               </div>
               <div className="ui segment">
-                <h3 className="ui header">{question.optionTwo.text}</h3>
+                <h2 className="ui header">{question.optionTwo.text}</h2>
 
                 <span>
                   {question.optionTwo.votes.includes(authedUser) && (
@@ -110,42 +114,47 @@ class QuestionPage extends Component {
       );
     } else {
       return (
-        <div>
-          <div>
-            <p>{authedUser} Not Answered this poll</p>
+        <div className="ui grid internally celled">
+          <div className="row">
+            <div className="four wide floated column">
+              <div className="header">
+                <h1 class="ui header">{questionUser.name} asked:</h1>
+              </div>
+            </div>
+            <div className="twelve wide floated column">
+              <h1 class="ui header">Would You Rather...</h1>
+            </div>
           </div>
-          <div className="ui image medium">
-            <img
-              src={questionUser.avatarURL}
-              alt={`Avatar of ${questionUser.name}`}
-            />
-          </div>
-          <div className="content">
-            <div className="header"> {questionUser.name} asked:</div>
-            <div className="meta">
-              <span> Would you rather </span>
+
+          <div className="row">
+            <div className="four wide floated column">
+              <img
+                className="medium"
+                src={questionUser.avatarURL}
+                alt={`Avatar of ${questionUser.name}`}
+              />
             </div>
 
-            <div className="description">
-              <p>...{question.optionOne.text}...</p>
-
-              <button
-                className="replying-to"
-                onClick={e => this.handleAnswer(e, "optionOne")}
-              >
-                Vote OptionOne
-              </button>
-            </div>
-
-            <div className="description">
-              <p>...{question.optionTwo.text}...</p>
-
-              <button
-                className="replying-to"
-                onClick={e => this.handleAnswer(e, "optionTwo")}
-              >
-                Vote OptionTwo
-              </button>
+            <div className="twelve wide floated column">
+              <div className="ui two column stackable center aligned grid segment">
+                <div className="column">
+                  <button
+                    className="ui submit button teal"
+                    onClick={e => this.handleAnswer(e, "optionOne")}
+                  >
+                    {question.optionOne.text}
+                  </button>
+                </div>
+                <div className="ui vertical divider">or</div>
+                <div className="column">
+                  <button
+                    className="ui submit button teal"
+                    onClick={e => this.handleAnswer(e, "optionTwo")}
+                  >
+                    {question.optionTwo.text}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

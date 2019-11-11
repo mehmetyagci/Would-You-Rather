@@ -59,8 +59,8 @@ class NewQuestion extends Component {
 
     return (
       <form onSubmit={this.handleSubmit} className="ui form">
-        <h2 className="ui dividing header">Create New Question</h2>
-        <h3 className="">Woud you rather... </h3>
+        <h1 className="ui dividing header">Create New Question</h1>
+        <h2 className="">Woud you rather... </h2>
         <div className="field">
           <label>Option One</label>
           <input
