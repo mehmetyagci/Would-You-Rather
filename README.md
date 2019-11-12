@@ -57,3 +57,5 @@ Currently `_DATA.js` file is used to mock backend. Read backend may be added in 
 * [Udacity CSS Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/css.html)
 * [Udacity HTML Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/index.html)
 * [Udacity JavaScript Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html)
+* [React Router vs Switch Components](https://medium.com/@jenniferdobak/react-router-vs-switch-components-2af3a9fc72e)
+* [Private Route, Public Route, and Restricted Route with React Router](https://medium.com/@thanhbinh.tran93/private-route-public-route-and-restricted-route-with-react-router-d50b27c15f5e)

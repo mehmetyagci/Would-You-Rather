@@ -1,34 +1,33 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-import {setAuthedUser} from '../actions/authedUser';
+import { setAuthedUser } from "../actions/authedUser";
 
 class Nav extends Component {
   handleLogout = e => {
-    e.preventDefault ();
-    const {history, setAuthedUser} = this.props;
-    history.push ('/');
-    setAuthedUser (null);
+    e.preventDefault();
+    const { history, setAuthedUser } = this.props;
+    history.push("/");
+    setAuthedUser(null);
   };
 
-  render () {
-    const {authenticated, authedUser, user} = this.props;
+  render() {
+    const { authenticated, authedUser, user } = this.props;
     return (
       <div className="ui secondary menu teal">
-
         <NavLink className="item" to="/" exact activeClassName="active">
           Home
         </NavLink>
-        <NavLink className="item" to="/new" activeClassName="active">
+        <NavLink className="item" to="/add" activeClassName="active">
           New Question
         </NavLink>
         <NavLink className="item" to="/leaderboard" activeClassName="active">
           Leaderboard
         </NavLink>
 
-        {authenticated &&
+        {authenticated && (
           <div className="right menu">
             <div className="item">
               <img
@@ -46,26 +45,32 @@ class Nav extends Component {
                 Logout
               </div>
             </div>
-          </div>}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-function mapStateToProps({authedUser, users}) {
+function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
     authenticated: authedUser !== null,
-    user: users[authedUser],
+    user: users[authedUser]
   };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     setAuthedUser: id => {
-      dispatch (setAuthedUser (id));
-    },
+      dispatch(setAuthedUser(id));
+    }
   };
 }
 
-export default withRouter (connect (mapStateToProps, mapDispatchToProps) (Nav));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Nav)
+);
