@@ -17,7 +17,6 @@ class NewQuestion extends Component {
     this.setState (() => ({
       optionOne,
     }));
-
   };
 
   handleOptionTwoChange = e => {
@@ -26,7 +25,6 @@ class NewQuestion extends Component {
     this.setState (() => ({
       optionTwo,
     }));
-
   };
 
   handleSubmit = e => {

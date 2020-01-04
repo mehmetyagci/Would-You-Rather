@@ -42,7 +42,7 @@ class App extends Component {
                       exact
                       component={QuestionPage}
                     />
-                    <Route path="/new" exact component={NewQuestion} />
+                    <Route path="/add" exact component={NewQuestion} />
                     <Route path="/leaderboard" exact component={Leaderboard} />
                   </Fragment>}
               <Route component={NotFound} />
