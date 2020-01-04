@@ -2,7 +2,9 @@
 
 Would You Rather is the second project for the Udacity React Nanodegree program. The application created using React, Redux, React Router, Semantic UI etc... This application is a recreation of the classic game, Would You Rather. A user can login and submit reponses to the number of different Would You Rather questions that have been asked. A user can also add new questions to be answered as well as see where they rank among all users on the questions asked/answered Leaderboards. 
 
+## Demo
 
+You can see a live demo of the project [here](https://mehmetyagci.github.io/Would-You-Rather/)
 
 
 ## Installation
