@@ -2,7 +2,7 @@
   "name": "would-you-rather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mehmetyagci.github.io/Would-You-Rather/",
+  "homepage": "https://mehmetyagci.github.io/would-you-rather/",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.10.2",
