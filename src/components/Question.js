@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import { formatQuestion } from "../utils/helpers";
 import { handleAnswerQuestion } from "../actions/questions";
+import NotFound from "./NotFound";
 
 class Question extends Component {
   handleAnswer = (e, answer) => {
@@ -22,7 +23,7 @@ class Question extends Component {
     const { question } = this.props;
 
     if (question == null) {
-      return <p>This Question doesn't exist</p>;
+      return <NotFound errorMessage="Question not found!" />;
     }
 
     return (
@@ -76,4 +77,4 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(Question));
+export default connect(mapStateToProps)(Question);

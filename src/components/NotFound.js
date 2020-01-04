@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 
-export default function NotFound () {
+export default function NotFound(props) {
+  const { errorMessage } = props;
+
   return (
     <div className="masthead error segment">
       <div className="container">
-        <h1 className="ui dividing header">404</h1>
-        <p>Page Not Found</p>
+        {errorMessage ? <h1>{errorMessage}</h1> : <h1>Page Not Found</h1>}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { handleAnswerQuestion } from "../actions/questions";
+import NotFound from "./NotFound";
 
 class QuestionPage extends Component {
   handleAnswer = (e, answer) => {
@@ -162,11 +163,12 @@ class QuestionPage extends Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question } = this.props;    
 
     if (question == null) {
-      return <p>This Question doesn't exist</p>;
+      return <NotFound errorMessage="This Question doesn't exist" />;
     }
+
     return <div>{this.renderQuestion()}</div>;
   }
 }
@@ -174,7 +176,7 @@ class QuestionPage extends Component {
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
   const question = questions[id];
-  const questionUser = users[question.author];
+  const questionUser = question != null ? users[question.author] : "";
   return {
     authedUser,
     question,
