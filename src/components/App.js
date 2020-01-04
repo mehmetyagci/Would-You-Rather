@@ -1,34 +1,34 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  withRouter
-} from "react-router-dom";
-import { connect } from "react-redux";
-import LoadingBar from "react-redux-loading-bar";
+  withRouter,
+} from 'react-router-dom';
+import {connect} from 'react-redux';
+import LoadingBar from 'react-redux-loading-bar';
 
-import { handleInitialData } from "../actions/shared";
-import { PrivateRoute } from './PrivateRoute';
-import Dashboard from "./Dashboard";
-import NewQuestion from "./NewQuestion";
-import QuestionPage from "./QuestionPage";
-import Leaderboard from "./Leaderboard";
-import Nav from "./Nav";
-import Login from "./Login";
-import NotFound from "./NotFound";
+import {handleInitialData} from '../actions/shared';
+import {PrivateRoute} from './PrivateRoute';
+import Dashboard from './Dashboard';
+import NewQuestion from './NewQuestion';
+import QuestionPage from './QuestionPage';
+import Leaderboard from './Leaderboard';
+import Nav from './Nav';
+import Login from './Login';
+import NotFound from './NotFound';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.dispatch(handleInitialData());
+  componentDidMount () {
+    this.props.dispatch (handleInitialData ());
   }
 
-  render() {
-    const { authedUser, authenticated } = this.props;
+  render () {
+    const {authedUser, authenticated} = this.props;
     const MainComponent = !authenticated ? Login : Dashboard;
 
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Fragment>
           <div className="ui container">
             {authenticated && <Nav />}
@@ -54,12 +54,12 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions }) {
+function mapStateToProps({authedUser, questions}) {
   return {
     loading: questions === null,
     authenticated: authedUser !== null,
-    authedUser
+    authedUser,
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect (mapStateToProps) (App);
