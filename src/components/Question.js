@@ -49,7 +49,7 @@ class Question extends Component {
           </div>
           <br />
           <div className="bottom aligned">
-            <Link to={`/question/${question.id}`}>
+            <Link to={`/questions/${question.id}`}>
               <button className="ui fluid large submit button teal">
                 View Poll
               </button>
